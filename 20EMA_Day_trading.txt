@@ -1,4 +1,5 @@
 //@version=1
+// By vishnuashok123
 study("20 EMA Daytrading Strategy", overlay=true)
 
 e20 = ema(close, 20)
