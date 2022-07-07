@@ -1,0 +1,17 @@
+//@version=1
+study("20 EMA Daytrading Strategy", overlay=true)
+
+e20 = ema(close, 20)
+
+plot(e20, title="EMA 20", color=color(orange,0))
+
+
+longCond = crossover(close[1], e20) and close>=high[1]
+shortCond = crossunder(close[1], e20) and close<=low[1]
+
+bgcolor(color=longCond ? green : na)
+bgcolor(color=shortCond ? red : na)
+
+plotshape(series=longCond, title="Long", style=shape.triangleup, location=location.belowbar, color=green, text="LONG", size=size.small)
+plotshape(series=shortCond, title="Short", style=shape.triangledown, location=location.abovebar, color=red, text="SHORT", size=size.small)
+
